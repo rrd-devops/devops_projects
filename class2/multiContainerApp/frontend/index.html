@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Joke Frontend</title>
+	</head>
+<body>
+	<h1>Random Joke</h1>
+	<button id="get">Get Joke</button>
+	<p id="joke"></p>
+	<script>
+		const btn = document.getElementById('get');
+		const p = document.getElementById('joke');
+		btn.addEventListener('click', async () => {
+					try {
+								// backend service will be reachable by its container name on the same network
+								const res = await fetch('http://backend:5000/joke');
+								const json = await res.json();
+								p.textContent = json.joke;
+							} catch (e) {
+										p.textContent = 'Error: ' + e;
+									}
+				});
+	</script>
+</body>
+</html>
