@@ -1,14 +1,12 @@
 
-# Goal 
+Goal 
 Run PostgreSQL container with a named volume, create table and data, delete container, start new container with same volume, verify data persistent.
 
 Create a docker volume
 ```bash
 docker volume create pgdata_assign2
 ```
-```markdown
 Start the Postgres container and mount the pgdata_assign2 inside as /var/lib/postgresql/data
-```
 
 ```bash
 docker run -d \
