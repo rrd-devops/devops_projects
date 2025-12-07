@@ -20,9 +20,7 @@ docker run -d \
 -p 5432:5432 \
 postgres:15
 ```
-```markdown
 Add the movie names to the database
-```
 ```bash
 docker exec -it pg-assign2 psql -U bootcamp -d bootcampdb -c "CREATE TABLE movies (id SERIAL PRIMARY KEY, title TEXT, year INT);"
 # insert data
@@ -30,15 +28,13 @@ docker exec -it pg-assign2 psql -U bootcamp -d bootcampdb -c "INSERT INTO movies
 # verify
 docker exec -it pg-assign2 psql -U bootcamp -d bootcampdb -c "SELECT *
 ```
-```markdown
 stop and delete the container
-```
 ```bash
 docker stop pg-assign2
 docker rm pg-assign2
 ```
-```markdown
 Start a new container and start with a different port
+```bash
 docker run -d \
 --name pg-assign2-new \
 -e POSTGRES_PASSWORD=secretpw \
@@ -48,9 +44,7 @@ docker run -d \
 -p 5433:5432 \
 postgres:15
 ```
-```markdown
 Check if the movie names are still available in the data base created with volume
-```
 ```bash
 docker exec -it pg-assign2-new psql -U bootcamp -d bootcampdb -c "SELECT * FROM movies;"
 ```
