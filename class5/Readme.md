@@ -1,5 +1,5 @@
 
-# **Flask Blog Web Application – AWS ECS Deployment**
+# **Flask Blog Web Application – AWS EC2 Deployment**
 ## **Scope**
 
 This project demonstrates deploying a containerized Flask-based blog web application on AWS ECS, backed by a PostgreSQL database on Amazon RDS, and securely exposed to the public internet using an Application Load Balancer (ALB) with HTTPS via AWS Certificate Manager (ACM).
