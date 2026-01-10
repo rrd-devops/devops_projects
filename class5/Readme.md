@@ -123,7 +123,7 @@ The primary goals of this setup are:
 
 9.  Verify Deployment
 
-        Access the application via: https://nov25.rrd-devops.xyz
+        Access the application via: [https://nov25.rrd-devops.xyz] (https://nov25.rrd-devops.xyz)
         The site will be live until **11.01.2026** and will be taken down to save free credits. 
         Confirm:
             HTTPS is working.
