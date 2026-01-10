@@ -86,17 +86,18 @@ The primary goals of this setup are:
 
         Launch an Amazon RDS PostgreSQL instance.
         Place RDS inside the same VPC as ECS.
-        Configure security groups to allow inbound traffic on 5432 only from ECS tasks.
+        Configure security groups to allow inbound traffic on 5432 only from EC2
         Note the RDS endpoint for application configuration.
 
-5. Configure ECS Cluster and Task Definition
+5. Configure EC2 service
 
-        Create an ECS cluster (EC2-backed or Fargate).
-        Define a Task Definition:
-          Use the ECR image.
-          Map container port 5000.
-          Add environment variables for database connectivity.
-        Assign appropriate IAM roles for ECS execution.
+        Create an EC2 instance
+        Install Docker and Docker compose
+        Create an IAM role for EC2 instance
+        Attach the role to EC2 instance and set the security groups
+        Deploy the docker image in EC2 instance
+        Database can be connected as they are in the same VPC via 5432
+        Run the container in EC2 and check from local url
 
 6. Create Application Load Balancer (ALB)
 
@@ -112,22 +113,18 @@ The primary goals of this setup are:
         Validate the certificate via DNS.
         Attach the ACM certificate to the ALB HTTPS listener.
 
-8.  Create ECS Service
-
-        Create an ECS Service using the task definition.
-        Attach the service to the ALB target group.
-        Ensure ECS security group allows inbound traffic on 5000 from the ALB only.
-
-9.  Configure Route 53 DNS
+8.  Configure Route 53 DNS
 
         Create a hosted zone for rrd-devops.xyz in Route 53.
         Add an A record (Alias):
             nov25.rrd-devops.xyz → Application Load Balancer.
         DNS now routes public traffic to the ALB.
+        Add the ns servers in the Namecheap (domain provider)
 
-10. Verify Deployment
+9.  Verify Deployment
 
         Access the application via: https://nov25.rrd-devops.xyz
+        The site will be live until **11.01.2026** and will be taken down to save free credits. 
         Confirm:
             HTTPS is working.
             Blog posts are stored and retrieved from RDS.
